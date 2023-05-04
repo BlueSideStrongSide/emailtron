@@ -9,9 +9,8 @@ from typing import Type, List
 from src.msg_exceptions.message_parse_exceptions import  UnableToLocateFile, UnableToWriteFile
 
 
-class MSG_PARSED:
+class HgMsgParsed:
     def __init__(self, message:email.message.EmailMessage):
-
         self.message_ = message
 
     @property
@@ -42,15 +41,15 @@ class MSG_PARSED:
         ...
 
 
-class MSG_PARSER:
+class HgMsgParser:
 
     def __init__(self):
         self.all_read_messages:list[dict[str, MSG_PARSED]]= [] #list of MSG_PARSED items
 
     @property
-    def message_viewer(self) -> MSG_PARSED:
+    def message_viewer(self) -> HgMsgParsed:
 
-        return MSG_PARSED(self.current_message)
+        return HgMsgParsed(self.current_message)
 
     def remove_illegal_chars_folder(self, folder_string:str) ->str:
         illegal_chars = ["<",">",":","\"","/","\\","|","?","*",":"]
@@ -63,6 +62,7 @@ class MSG_PARSER:
     def read_message(self, source_message:str,
                      internal_dir_call:bool=False,
                      raise_on_error:bool=True)-> email.message.EmailMessage:
+
         # only txt/eml supported for now
         try:
             if pathlib.Path(source_message).is_file():
@@ -70,7 +70,7 @@ class MSG_PARSER:
                     current_message = BytesParser(policy=policy.default).parse(message_file)
 
                     self.all_read_messages.append({"source_file_location":source_message,
-                                                   "message_item":MSG_PARSED(current_message)
+                                                   "message_item":HgMsgParsed(current_message)
                                                    }
                                                   )
                     return current_message
