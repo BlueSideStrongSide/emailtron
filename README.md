@@ -11,10 +11,10 @@ Each message will be represented as a dataclass with various attributes for proc
 ## Current Status
 
 **To Complete**
-- [ ] Add doc strings
-- [ ] Add logging module
-- [ ] add support for .msg files
+- [x] Add doc strings
+- [x] Add logging module
 - [ ] JSON repre for email data
+- [ ] add support for .msg files
 - [ ] Expand save to folder_name options
 - [ ] Metadata file within each folder with summary of items parsed
 - [ ] migrate to dataclass to represent a parsed email
@@ -25,6 +25,9 @@ Each message will be represented as a dataclass with various attributes for proc
 - [ ] Report generator PDF|HTML based on export folder
 - [ ] add support to connect to mailboxes (protocol base support|outlook|gmail)
 - [ ] Create Module for AI interaction (Context, Name Recognition)
+
+**Considerations**
+ - Should we capture duplicate messages?
 
 **Complete**
 - [x] Create simple lib with modular expansions
