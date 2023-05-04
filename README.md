@@ -12,6 +12,7 @@ Each message will be represented as a dataclass with various attributes for proc
 
 **To Complete**
 - [ ] Add doc strings
+- [ ] Add logging module
 - [ ] add support for .msg files
 - [ ] JSON repre for email data
 - [ ] Expand save to folder_name options
